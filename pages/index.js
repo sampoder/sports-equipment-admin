@@ -35,6 +35,7 @@ const data = [
 ];
 
 export default function Home(props) {
+  const router = useRouter()
   const collect = async (name) => {
     await fetch(`/api/collect?id=${name}`)
     alert('Done.')
