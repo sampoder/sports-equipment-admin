@@ -11,7 +11,7 @@ import {
 } from "@geist-ui/react";
 import { orderBy, filter } from "lodash";
 import date from "date-and-time";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 const data = [
   {
@@ -35,14 +35,14 @@ const data = [
 ];
 
 export default function Home(props) {
-  const router = useRouter()
+  const router = useRouter();
   const collect = async (name) => {
-    await fetch(`/api/collect?id=${name}`)
-    router.reload()
+    await fetch(`/api/collect?id=${name}`);
+    router.reload();
   };
   const returnItem = async (name) => {
-    await fetch(`/api/return?id=${name}`)
-    router.reload()
+    await fetch(`/api/return?id=${name}`);
+    router.reload();
   };
   let tbc = filter(
     props.data,
@@ -79,7 +79,9 @@ export default function Home(props) {
           <Tag>Email their parents</Tag>
         </a>
         <Spacer x={0.5} />
-        <a><Tag onClick={() => collect(id)}>Mark as collected</Tag></a>
+        <a>
+          <Tag onClick={() => collect(id)}>Mark as collected</Tag>
+        </a>
       </>
     ),
   }));
@@ -119,7 +121,9 @@ export default function Home(props) {
           <Tag>Email their parents</Tag>
         </a>
         <Spacer x={0.5} />
-        <a><Tag onClick={() => returnItem(id)}>Mark as returned</Tag></a>
+        <a>
+          <Tag onClick={() => returnItem(id)}>Mark as returned</Tag>
+        </a>
       </>
     ),
     time: fields["Collected Day"],
@@ -127,7 +131,7 @@ export default function Home(props) {
   let overdue = filter(
     props.data,
     (instance) =>
-      instance.fields["Returned"] == "0" &&
+      instance.fields["Returned"] != "1" &&
       instance.fields["Collected"] == "1" &&
       instance.fields["Time up from collection?"] == "Time up" &&
       instance.fields["Consent"][0] == 1
@@ -160,7 +164,9 @@ export default function Home(props) {
           <Tag>Email their parents</Tag>
         </a>
         <Spacer x={0.5} />
-        <a><Tag onClick={() => returnItem(id)}>Mark as returned</Tag></a>
+        <a>
+          <Tag onClick={() => returnItem(id)}>Mark as returned</Tag>
+        </a>
       </>
     ),
     time: fields["Collected Day"],
@@ -222,7 +228,13 @@ export default function Home(props) {
         </Table>
         <Spacer y={1.5} />
         <Note type="success" label={false}>
-          Built by Sam Poder, open source <strong><a href="https://github.com/sampoder/sports-equipment-admin">here</a></strong>.
+          Built by Sam Poder, open source{" "}
+          <strong>
+            <a href="https://github.com/sampoder/sports-equipment-admin">
+              here
+            </a>
+          </strong>
+          .
         </Note>
       </Page>
     </>
