@@ -38,7 +38,6 @@ export default function Home(props) {
   const router = useRouter()
   const collect = async (name) => {
     await fetch(`/api/collect?id=${name}`)
-    alert('Done.')
     router.reload()
   };
   const returnItem = async (name) => {
@@ -119,7 +118,7 @@ export default function Home(props) {
           <Tag>Email their parents</Tag>
         </a>
         <Spacer x={0.5} />
-        <a><Tag onClick={() => collect(id)}>Mark as returned</Tag></a>
+        <a><Tag onClick={() => returnItem(id)}>Mark as returned</Tag></a>
       </>
     ),
     time: fields["Collected Day"],
@@ -159,7 +158,7 @@ export default function Home(props) {
           <Tag>Email their parents</Tag>
         </a>
         <Spacer x={0.5} />
-        <a><Tag onClick={() => collect(id)}>Mark as returned</Tag></a>
+        <a><Tag onClick={() => returnItem(id)}>Mark as returned</Tag></a>
       </>
     ),
     time: fields["Collected Day"],
