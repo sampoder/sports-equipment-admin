@@ -41,6 +41,10 @@ export default function Home(props) {
     alert('Done.')
     router.reload()
   };
+  const returnItem = async (name) => {
+    await fetch(`/api/return?id=${name}`)
+    router.reload()
+  };
   let tbc = filter(
     props.data,
     (instance) =>
