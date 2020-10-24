@@ -1,4 +1,5 @@
 var Airtable = require('airtable');
+import date from "date-and-time";
 var base = new Airtable({apiKey: process.env.AIRTABLE}).base('apprtbHq6BHUIcUpH');
 
 export default async (req, res) => {
