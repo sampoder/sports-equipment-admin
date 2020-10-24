@@ -76,7 +76,7 @@ export default function Home(props) {
           <Tag>Email their parents</Tag>
         </a>
         <Spacer x={0.5} />
-        <Tag onClick={() => collect(id)}>Mark as collected</Tag>
+        <a><Tag onClick={() => collect(id)}>Mark as collected</Tag></a>
       </>
     ),
   }));
@@ -115,7 +115,7 @@ export default function Home(props) {
           <Tag>Email their parents</Tag>
         </a>
         <Spacer x={0.5} />
-        <Tag onClick={() => collect(id)}>Mark as returned</Tag>
+        <a><Tag onClick={() => collect(id)}>Mark as returned</Tag></a>
       </>
     ),
     time: fields["Collected Day"],
@@ -155,7 +155,7 @@ export default function Home(props) {
           <Tag>Email their parents</Tag>
         </a>
         <Spacer x={0.5} />
-        <Tag onClick={() => collect(id)}>Mark as returned</Tag>
+        <a><Tag onClick={() => collect(id)}>Mark as returned</Tag></a>
       </>
     ),
     time: fields["Collected Day"],
