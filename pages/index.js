@@ -35,7 +35,46 @@ const data = [
 
 export default function Home(props) {
   const collect = async (name) => {
-    await fetch(`/api/collect?id=${name}`)
+    alert(await fetch(`/api/collect?id=${name}`))
+    tbc = filter(
+      props.data,
+      (instance) =>
+        typeof instance.fields["Collected"] == "undefined" &&
+        instance.fields["Consent"][0] == 1
+    ).map(({ id, fields }) => ({
+      name: fields["Name"],
+      email:
+        typeof fields["Personal Email"] == "array"
+          ? fields["Personal Email"][0]
+          : fields["Personal Email"],
+      item: fields["Item"],
+      time: fields["Requested Day"],
+      shortcuts: (
+        <>
+          <a
+            href={`mailto:${
+              typeof fields["Personal Email"] == "array"
+                ? fields["Personal Email"][0]
+                : fields["Personal Email"]
+            }`}
+          >
+            <Tag>Email them</Tag>
+          </a>
+          <Spacer x={0.5} />
+          <a
+            href={`mailto:${
+              typeof fields["Parents Email"] == "array"
+                ? fields["Parents Email"][0]
+                : fields["Parents Email"]
+            }`}
+          >
+            <Tag>Email their parents</Tag>
+          </a>
+          <Spacer x={0.5} />
+          <Tag onClick={() => collect(id)}>Mark as collected</Tag>
+        </>
+      ),
+    }));
   };
   let tbc = filter(
     props.data,
