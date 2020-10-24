@@ -87,6 +87,7 @@ export default function Home(props) {
     props.data,
     (instance) =>
       instance.fields["Collected"] == "1" &&
+      instance.fields["Returned"] != "1" &&
       instance.fields["Time up from collection?"] != "Time up" &&
       instance.fields["Consent"][0] == 1
   ).map(({ id, fields }) => ({
@@ -127,6 +128,7 @@ export default function Home(props) {
     props.data,
     (instance) =>
       instance.fields["Returned"] == "1" &&
+      instance.fields["Collected"] == "1" &&
       instance.fields["Time up from collection?"] == "Time up" &&
       instance.fields["Consent"][0] == 1
   ).map(({ id, fields }) => ({
