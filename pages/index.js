@@ -35,7 +35,7 @@ const data = [
 
 export default function Home(props) {
   const collect = async (name) => {
-    alert(name);
+    await fetch(`/api/collect?id=${name}`)
   };
   let tbc = filter(
     props.data,
@@ -72,7 +72,7 @@ export default function Home(props) {
           <Tag>Email their parents</Tag>
         </a>
         <Spacer x={0.5} />
-        <Tag onClick={() => collect("James")}>Mark as collected</Tag>
+        <Tag onClick={() => collect(id)}>Mark as collected</Tag>
       </>
     ),
   }));
@@ -111,7 +111,7 @@ export default function Home(props) {
           <Tag>Email their parents</Tag>
         </a>
         <Spacer x={0.5} />
-        <Tag onClick={() => collect("James")}>Mark as returned</Tag>
+        <Tag onClick={() => collect(id)}>Mark as returned</Tag>
       </>
     ),
     time: fields["Collected Day"],
@@ -151,7 +151,7 @@ export default function Home(props) {
           <Tag>Email their parents</Tag>
         </a>
         <Spacer x={0.5} />
-        <Tag onClick={() => collect("James")}>Mark as returned</Tag>
+        <Tag onClick={() => collect(id)}>Mark as returned</Tag>
       </>
     ),
     time: fields["Collected Day"],
@@ -213,7 +213,7 @@ export default function Home(props) {
         </Table>
         <Spacer y={1.5} />
         <Note type="success" label={false}>
-          Built by Sam Poder
+          Built by Sam Poder, open source <strong><a href="https://github.com/sampoder/sports-equipment-admin">here</a></strong>.
         </Note>
       </Page>
     </>
