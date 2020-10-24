@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@geist-ui/react": "^1.6.0",
+    "@geist-ui/react": "^2.1.0-canary.1",
     "airtable": "^0.10.0",
     "date-and-time": "^0.14.1",
     "lodash": "^4.17.20",
