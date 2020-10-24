@@ -35,7 +35,7 @@ const data = [
 
 export default function Home(props) {
   const collect = async (name) => {
-    alert(await fetch(`/api/collect?id=${name}`))
+    alert(await fetch(`https://sports-equipment-admin.vercel.app/api/collect?id=${name}`))
     tbc = filter(
       props.data,
       (instance) =>
