@@ -127,7 +127,7 @@ export default function Home(props) {
   let overdue = filter(
     props.data,
     (instance) =>
-      instance.fields["Returned"] == "1" &&
+      instance.fields["Returned"] == "0" &&
       instance.fields["Collected"] == "1" &&
       instance.fields["Time up from collection?"] == "Time up" &&
       instance.fields["Consent"][0] == 1
